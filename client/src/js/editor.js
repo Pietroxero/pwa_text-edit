@@ -3,7 +3,7 @@ import { header } from './header';
 
 export default class {
     constructor () {
-        const localData = localeStorage.getItem ('content');
+        const localData = localStorage.getItem ('content');
 
         if (typeof CodeMirror === 'undefined') {
             throw new Error ('CodeMirror has not loaded');

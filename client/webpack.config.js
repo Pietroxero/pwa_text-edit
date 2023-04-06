@@ -29,7 +29,7 @@ module.exports = () => {
       // this will inject our service worker
       new InjectManifest ({
         swSrc: './src-sw.js',
-        seDest: 'src-sw.js',
+        swDest: 'src-sw.js',
       }),
       // here we create the manifest.json file
       new WebpackPwaManifest ({
@@ -38,37 +38,38 @@ module.exports = () => {
         name: 'Here is yet ANOTHER text editor YAY',
         short_name: 'JATE',
         description: 'Here is yet ANOTHER text editor YAY',
-        background_color: '225ca3',
-        theme_color: '225ca3',
+        background_color: '#225ca3',
+        theme_color: '#225ca3',
         start_url: '/',
         publicPath: '/',
         icons: [{
             src: path.resolve ('src/images/logo.png'),
             sizes: [96, 128, 192, 256, 384, 512],
-            destination: path.json ('assets', 'icons'),
+            destination: path.join ('assets', 'icons'),
       },
     ], 
       }),
     ],
 
     module: {
-        //here will be our css loaders
-
-      rules: [{
-test: /\.css$/i,
-use: ['style-loader', 'css-loader'],
-      },
-      {
-        test: /\.m?js$/,
-        exclude: /node_modules/,
-        use: {
+      // CSS loaders
+      rules: [
+        {
+          test: /\.css$/i,
+          use: ['style-loader', 'css-loader'],
+        },
+        {
+          test: /\.m?js$/,
+          exclude: /node_modules/,
+          // We use babel-loader in order to use ES6.
+          use: {
             loader: 'babel-loader',
             options: {
-                presets: ['@babel/preset.env'],
-                plugins: ['@babel/plugin-proposal-object-rest-spread', '@babel/transform-runtime'],
+              presets: ['@babel/preset-env'],
+              plugins: ['@babel/plugin-proposal-object-rest-spread', '@babel/transform-runtime'],
             },
+          },
         },
-      },
       ],
     },
   };
