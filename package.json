@@ -12,6 +12,9 @@
         "client": "cd client && npm start",
         "heroku-prebuild": "cd client && npm install --dev"
       },
+      "engines": {
+"node": "16.x"
+      },
     "keywords": [],
     "author": "",
     "license": "ISC",
