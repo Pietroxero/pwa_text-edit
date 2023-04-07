@@ -36,4 +36,4 @@ WHEN I deploy to Heroku
 THEN I should have proper build scripts for a webpack application
 
 ## Deployment
-Heroku Link:
+Heroku Link: https://text-editor-pds.herokuapp.com/
